@@ -10,6 +10,19 @@ def validate_html(html):
     >>> validate_html('<strong>example')
     False
     '''
+    tags = _extract_tags(html)
+    stack = []
+    for i, symbol in enumerate(tags):
+        if symbol[1] != '/':
+            stack.append(symbol)
+        else:
+            if len(stack) == 0:
+                return False
+            stack.pop()
+    if len(stack) == 0:
+        return True
+    else:
+        return False
 
     # HINT:
     # use the _extract_tags function below to generate a list of html tags without any extra text;
@@ -29,3 +42,10 @@ def _extract_tags(html):
     >>> _extract_tags('Python <strong>rocks</strong>!')
     ['<strong>', '</strong>']
     '''
+    arr = []
+    for i in range(len(html)):
+        if html[i] == '<':
+            for j in range(len(html)-i):
+                if html[j]=='>':
+                    arr.append(html[i:j+1])
+    return arr
