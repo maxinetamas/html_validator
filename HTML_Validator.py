@@ -21,7 +21,7 @@ def validate_html(html):
             if len(stack) == 0:
                 return False
             for j in range(len(strings)):
-                if tags[i][2:-1] == strings[j]:
+                if symbol[2:-1] == strings[j]:
                     stack.pop()
     if len(stack) == 0:
         return True
