@@ -12,6 +12,8 @@ def validate_html(html):
     '''
     tags = _extract_tags(html)
     strings = []
+    if len(html) == 0:
+        return True
     if len(tags) == 0:
         return False
     for i, symbol in enumerate(tags):
