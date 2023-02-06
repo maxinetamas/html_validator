@@ -12,13 +12,17 @@ def validate_html(html):
     '''
     tags = _extract_tags(html)
     stack = []
+    strings = []
     for i, symbol in enumerate(tags):
         if symbol[1] != '/':
+            string.append(symbol[1:-1])
             stack.append(symbol)
         else:
             if len(stack) == 0:
                 return False
-            stack.pop()
+            for j in range(len(strings)):
+                if strings[i] == strings[j]:
+                    stack.pop()
     if len(stack) == 0:
         return True
     else:
