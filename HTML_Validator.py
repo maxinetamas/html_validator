@@ -50,6 +50,6 @@ def _extract_tags(html):
             for j in range(i, len(html) - 1):
                 if html[j] == '>':
                     arr.append(html[i:j + 1])
-                    i+=1
+                    i += 1
                     break
     return arr
