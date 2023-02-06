@@ -12,6 +12,8 @@ def validate_html(html):
     '''
     tags = _extract_tags(html)
     strings = []
+    if len(tags) == 0:
+        return False
     for i, symbol in enumerate(tags):
         if symbol[1] != '/':
             strings.append(symbol[1:-1])
