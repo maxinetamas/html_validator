@@ -11,19 +11,17 @@ def validate_html(html):
     False
     '''
     tags = _extract_tags(html)
-    stack = []
     strings = []
     for i, symbol in enumerate(tags):
         if symbol[1] != '/':
             strings.append(symbol[1:-1])
-            stack.append(symbol)
         else:
-            if len(stack) == 0:
+            if len(strings) == 0:
                 return False
             for j in range(len(strings)):
                 if symbol[2:-1] == strings[j]:
-                    stack.pop()
-    if len(stack) == 0:
+                    strings.pop()
+    if len(strings) == 0:
         return True
     else:
         return False
@@ -47,9 +45,9 @@ def _extract_tags(html):
     ['<strong>', '</strong>']
     '''
     arr = []
-    for i in range(len(html)):
+    for i in range(0, len(html) - 1):
         if html[i] == '<':
-            for j in range(len(html) - i):
+            for j in range(0, len(html) - i):
                 if html[j] == '>':
                     arr.append(html[i:j + 1])
     return arr
