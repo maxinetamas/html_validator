@@ -52,4 +52,4 @@ def _extract_tags(html):
                      arr.append(html[i:j + 1])
                      i+=1
                      break
-     return arr
+    return arr
