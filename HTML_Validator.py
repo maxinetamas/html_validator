@@ -23,6 +23,7 @@ def validate_html(html):
             for j in range(len(strings)):
                 if symbol[2:-1] == strings[j - 1]:
                     strings.pop()
+                    break
     if len(strings) == 0:
         return True
     else:
