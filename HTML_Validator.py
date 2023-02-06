@@ -19,7 +19,7 @@ def validate_html(html):
             if len(strings) == 0:
                 return False
             for j in range(len(strings)):
-                if symbol[2:-1] == strings[j]:
+                if symbol[2:-1] == strings[j - 1]:
                     strings.pop()
     if len(strings) == 0:
         return True
